@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CRF.UI/crf.ui.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
