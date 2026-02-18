@@ -41,6 +41,24 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
+# React/Node.js ignores
+node_modules/
+dist/
+dist-ssr/
+build/
+*.local
+coverage/
+.env
+.env.*
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
