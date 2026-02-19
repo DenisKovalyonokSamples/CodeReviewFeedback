@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="6" failures="0" errors="0" time="3.91">
+  <testsuite name="FeedbackSystem Component" errors="0" failures="0" skipped="0" timestamp="2026-02-19T18:41:24" time="2.306" tests="6">
+    <testcase classname="FeedbackSystem Component Initial Page Rendering Tests should render all aspects with their upvote and downvote buttons and counts" name="FeedbackSystem Component Initial Page Rendering Tests should render all aspects with their upvote and downvote buttons and counts" time="0.062">
+    </testcase>
+    <testcase classname="FeedbackSystem Component Initial Page Rendering Tests upvotes and downvotes count for the all aspects should be 0" name="FeedbackSystem Component Initial Page Rendering Tests upvotes and downvotes count for the all aspects should be 0" time="0.017">
+    </testcase>
+    <testcase classname="FeedbackSystem Component Functionality Tests should increment the upvote count for readability when upvote button is clicked" name="FeedbackSystem Component Functionality Tests should increment the upvote count for readability when upvote button is clicked" time="0.023">
+    </testcase>
+    <testcase classname="FeedbackSystem Component Functionality Tests should increment the downvote count for readability when downvote button is clicked" name="FeedbackSystem Component Functionality Tests should increment the downvote count for readability when downvote button is clicked" time="0.013">
+    </testcase>
+    <testcase classname="FeedbackSystem Component Functionality Tests should increment the upvote and downvote counts independently for different aspects" name="FeedbackSystem Component Functionality Tests should increment the upvote and downvote counts independently for different aspects" time="0.015">
+    </testcase>
+    <testcase classname="FeedbackSystem Component Functionality Tests should correctly handle multiple clicks on upvote and downvote buttons" name="FeedbackSystem Component Functionality Tests should correctly handle multiple clicks on upvote and downvote buttons" time="0.015">
+    </testcase>
+  </testsuite>
+</testsuites>
