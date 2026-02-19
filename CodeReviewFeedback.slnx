@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Solution Items/">
+    <File Path="Details.txt" />
     <File Path="Final result UI.png" />
   </Folder>
   <Project Path="CRF.UI/crf.ui.esproj">
