@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // List of code review aspects to be displayed in the feedback system
-const ASPECTS = [
+const codeQualityAspects = [
   "Readability",
   "Performance",
   "Security",
@@ -14,10 +14,11 @@ const ASPECTS = [
  * Each aspect has upvote/downvote buttons and animated counters.
  * Uses React state to track votes and provides a subtle animation on count change.
  */
+
 const CodeReviewFeedback = () => {
   // State: Array of { upvotes, downvotes, animateUp, animateDown } for each aspect
-  const [votes, setVotes] = useState(
-    ASPECTS.map(() => ({ upvotes: 0, downvotes: 0, animateUp: false, animateDown: false }))
+  const [aspectVotes, setAspectVotes] = useState(
+    codeQualityAspects.map(() => ({ upvotes: 0, downvotes: 0, animateUp: false, animateDown: false }))
   );
 
   /**
@@ -25,19 +26,19 @@ const CodeReviewFeedback = () => {
    * Increments upvote count and triggers animation.
    * @param {number} idx - Index of the aspect to upvote.
    */
-  const handleUpvote = (idx) => {
-    setVotes((prev) =>
-      prev.map((v, i) =>
-        i === idx
-          ? { ...v, upvotes: v.upvotes + 1, animateUp: true }
-          : v
+  const handleUpvote = (aspectIndex) => {
+    setAspectVotes((previousVotes) =>
+      previousVotes.map((aspectVote, index) =>
+        index === aspectIndex
+          ? { ...aspectVote, upvotes: aspectVote.upvotes + 1, animateUp: true }
+          : aspectVote
       )
     );
     // Remove animation after short delay
     setTimeout(() => {
-      setVotes((prev) =>
-        prev.map((v, i) =>
-          i === idx ? { ...v, animateUp: false } : v
+      setAspectVotes((previousVotes) =>
+        previousVotes.map((aspectVote, index) =>
+          index === aspectIndex ? { ...aspectVote, animateUp: false } : aspectVote
         )
       );
     }, 300);
@@ -48,19 +49,19 @@ const CodeReviewFeedback = () => {
    * Increments downvote count and triggers animation.
    * @param {number} idx - Index of the aspect to downvote.
    */
-  const handleDownvote = (idx) => {
-    setVotes((prev) =>
-      prev.map((v, i) =>
-        i === idx
-          ? { ...v, downvotes: v.downvotes + 1, animateDown: true }
-          : v
+  const handleDownvote = (aspectIndex) => {
+    setAspectVotes((previousVotes) =>
+      previousVotes.map((aspectVote, index) =>
+        index === aspectIndex
+          ? { ...aspectVote, downvotes: aspectVote.downvotes + 1, animateDown: true }
+          : aspectVote
       )
     );
     // Remove animation after short delay
     setTimeout(() => {
-      setVotes((prev) =>
-        prev.map((v, i) =>
-          i === idx ? { ...v, animateDown: false } : v
+      setAspectVotes((previousVotes) =>
+        previousVotes.map((aspectVote, index) =>
+          index === aspectIndex ? { ...aspectVote, animateDown: false } : aspectVote
         )
       );
     }, 300);
@@ -69,40 +70,40 @@ const CodeReviewFeedback = () => {
   return (
     <div className="my-0 mx-auto text-center w-mx-1200">
       <div className="flex wrap justify-content-center mt-30 gap-30">
-        {ASPECTS.map((aspect, idx) => (
-          <div className="pa-10 w-300 card" key={aspect}>
-            <h2>{aspect}</h2>
+        {codeQualityAspects.map((aspectName, aspectIndex) => (
+          <div className="pa-10 w-300 card" key={aspectName}>
+            <h2>{aspectName}</h2>
             <div className="flex my-30 mx-0 justify-content-around">
               {/* Upvote button for this aspect */}
               <button
                 className="py-10 px-15"
-                data-testid={`upvote-btn-${idx}`}
-                onClick={() => handleUpvote(idx)}
+                data-testid={`upvote-btn-${aspectIndex}`}
+                onClick={() => handleUpvote(aspectIndex)}
               >
                 👍 Upvote
               </button>
               {/* Downvote button for this aspect */}
               <button
                 className="py-10 px-15 danger"
-                data-testid={`downvote-btn-${idx}`}
-                onClick={() => handleDownvote(idx)}
+                data-testid={`downvote-btn-${aspectIndex}`}
+                onClick={() => handleDownvote(aspectIndex)}
               >
                 👎 Downvote
               </button>
             </div>
             {/* Upvote count with animation */}
             <p
-              className={`my-10 mx-0${votes[idx].animateUp ? " vote-animate" : ""}`}
-              data-testid={`upvote-count-${idx}`}
+              className={`my-10 mx-0${aspectVotes[aspectIndex].animateUp ? " vote-animate" : ""}`}
+              data-testid={`upvote-count-${aspectIndex}`}
             >
-              Upvotes: <strong>{votes[idx].upvotes}</strong>
+              Upvotes: <strong>{aspectVotes[aspectIndex].upvotes}</strong>
             </p>
             {/* Downvote count with animation */}
             <p
-              className={`my-10 mx-0${votes[idx].animateDown ? " vote-animate" : ""}`}
-              data-testid={`downvote-count-${idx}`}
+              className={`my-10 mx-0${aspectVotes[aspectIndex].animateDown ? " vote-animate" : ""}`}
+              data-testid={`downvote-count-${aspectIndex}`}
             >
-              Downvotes: <strong>{votes[idx].downvotes}</strong>
+              Downvotes: <strong>{aspectVotes[aspectIndex].downvotes}</strong>
             </p>
           </div>
         ))}
